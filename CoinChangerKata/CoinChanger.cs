@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CoinChangerKata
 {
@@ -9,45 +11,23 @@ namespace CoinChangerKata
             if (NotValidInput(coinDenomination))
                 throw new ArgumentException();
 
-            if (MoreThanTwoCoins(coinDenomination))
+            var change = new List<int>();
+            int module = input;
+
+            foreach (int coinType in coinDenomination.Reverse())
             {
-                var result2 = input / coinDenomination[2];
-                var temp2 = input % coinDenomination[2];
+                int result = module / coinType;
+                module = module % coinType;
 
-                var result1 = temp2 / coinDenomination[1];
-                var temp1 = temp2 % coinDenomination[1];
-
-                var result0 = temp1 / coinDenomination[0];
-
-                return new[] { result0, result1, result2 };
+                change.Insert(0, result);
             }
 
-            if (TwoCoins(coinDenomination))
-            {
-                var result1 = input / coinDenomination[1];
-                var temp = input % coinDenomination[1];
-
-                var result0 = temp / coinDenomination[0];
-
-                return new[]{ result0, result1 };
-            }
-
-            return new[] { input/ coinDenomination[0] };
-        }
-
-        private static bool MoreThanTwoCoins(int[] coinDenomination)
-        {
-            return coinDenomination.Length > 2;
+            return change.ToArray();
         }
 
         private static bool NotValidInput(int[] coinDenomination)
         {
             return coinDenomination == null || coinDenomination.Length == 0;
-        }
-
-        private static bool TwoCoins(int[] coinDenomination)
-        {
-            return coinDenomination.Length == 2;
         }
     }
 }
