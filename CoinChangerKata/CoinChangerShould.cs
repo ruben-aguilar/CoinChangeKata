@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace CoinChangerKata
 {
@@ -18,5 +19,12 @@ namespace CoinChangerKata
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void throw_an_exception_when_doesnt_have_any_coin()
+        {
+            Assert.Throws<ArgumentException>(() => CoinChanger.GetChange(1, new int[] { }));
+        }
     }
+   
 }
