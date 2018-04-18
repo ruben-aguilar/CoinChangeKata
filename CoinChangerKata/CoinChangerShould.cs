@@ -17,6 +17,8 @@ namespace CoinChangerKata
         [TestCase(11, new[]{1,2}, new[]{1,5})]
         [TestCase(12, new[]{1,2}, new[]{0,6})]
         [TestCase(5, new[]{1,2,5}, new[]{0,0,1})]
+        [TestCase(7, new[]{1,2,5}, new[]{0,1,1})]
+        [TestCase(8, new[]{1,2,5}, new[]{1,1,1})]
         public void return_coin_change(int input, int[] coinDenomination, int[] expected)
         {
             int[] result = CoinChanger.GetChange(input, coinDenomination);

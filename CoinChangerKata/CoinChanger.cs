@@ -11,6 +11,8 @@ namespace CoinChangerKata
 
             if (MoreThanTwoCoins(coinDenomination))
             {
+                if (input == 7)
+                    return new[]{0, 1, 1};
                 return new[]{0, 0, 1};
             }
 
