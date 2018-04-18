@@ -13,6 +13,10 @@ namespace CoinChangerKata
         [TestCase(5, new[]{5}, new[]{1})]
         [TestCase(10, new[]{5}, new[]{2})]
         [TestCase(3, new[]{1,2}, new[]{1,1})]
+        [TestCase(10, new[]{1,2}, new[]{0,5})]
+        [TestCase(11, new[]{1,2}, new[]{1,5})]
+        [TestCase(12, new[]{1,2}, new[]{0,6})]
+        [TestCase(5, new[]{1,2,5}, new[]{0,0,1})]
         public void return_coin_change(int input, int[] coinDenomination, int[] expected)
         {
             int[] result = CoinChanger.GetChange(input, coinDenomination);
@@ -32,5 +36,4 @@ namespace CoinChangerKata
             Assert.Throws<ArgumentException>(() => CoinChanger.GetChange(1, null));
         }
     }
-   
 }
