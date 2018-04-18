@@ -5,26 +5,14 @@ namespace CoinChangerKata
     [TestFixture]
     internal class CoinChangerShould
     {
-        private int[] _coinDenomination;
-
-        [Test]
-        public void return_coin_change()
+        [TestCase(1, new[]{1}, new[]{1})]
+        [TestCase(2, new[]{1}, new[]{2})]
+        [TestCase(5, new[]{1}, new[]{5})]
+        public void return_coin_change(int input, int[] coinDenomination, int[] expected)
         {
-            _coinDenomination = new[] {1};
+            int[] result = new CoinChanger().GetChange(input, coinDenomination);
 
-            int[] result = new CoinChanger().GetChange(1, _coinDenomination);
-
-            Assert.AreEqual(new[]{1}, result);
-        }
-
-        [Test]
-        public void return_two_one_cent_coins_for_two_cents_change_with_only_one_cent_coins()
-        {
-            _coinDenomination = new[] { 1 };
-
-            int[] result = new CoinChanger().GetChange(2, _coinDenomination);
-
-            Assert.AreEqual(new[] { 2 }, result);
+            Assert.AreEqual(expected, result);
         }
     }
 }
