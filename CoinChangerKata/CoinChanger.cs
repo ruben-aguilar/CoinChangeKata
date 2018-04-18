@@ -11,17 +11,22 @@ namespace CoinChangerKata
 
             if (MoreThanTwoCoins(coinDenomination))
             {
-                if (input == 7)
-                    return new[]{0, 1, 1};
-                if (input == 8)
-                    return new[] { 1, 1, 1 };
-                return new[]{0, 0, 1};
+                var result2 = input / coinDenomination[2];
+                var temp2 = input % coinDenomination[2];
+
+                var result1 = temp2 / coinDenomination[1];
+                var temp1 = temp2 % coinDenomination[1];
+
+                var result0 = temp1 / coinDenomination[0];
+
+                return new[] { result0, result1, result2 };
             }
 
             if (TwoCoins(coinDenomination))
             {
                 var result1 = input / coinDenomination[1];
                 var temp = input % coinDenomination[1];
+
                 var result0 = temp / coinDenomination[0];
 
                 return new[]{ result0, result1 };
