@@ -2,9 +2,12 @@
 {
     internal class CoinChanger
     {
-        public int[] GetChange(int i, int[] coinDenomination)
+        public int[] GetChange(int input, int[] coinDenomination)
         {
-            return new int[]{1};
+            if (input == 1)
+                return new[]{1};
+
+            return new[] { 2 };
         }
     }
 }
