@@ -6,7 +6,7 @@ namespace CoinChangerKata
     {
         public static int[] GetChange(int input, int[] coinDenomination)
         {
-            if (coinDenomination.Length == 0)
+            if (NotValidInput(coinDenomination))
                 throw new ArgumentException();
 
             if (MoreThanOneCoin(coinDenomination))
@@ -15,6 +15,11 @@ namespace CoinChangerKata
             }
 
             return new[] { input/ coinDenomination[0] };
+        }
+
+        private static bool NotValidInput(int[] coinDenomination)
+        {
+            return coinDenomination == null || coinDenomination.Length == 0;
         }
 
         private static bool MoreThanOneCoin(int[] coinDenomination)

@@ -25,6 +25,12 @@ namespace CoinChangerKata
         {
             Assert.Throws<ArgumentException>(() => CoinChanger.GetChange(1, new int[] { }));
         }
+
+        [Test]
+        public void throw_an_exception_when_coin_denomanitation_not_initialized()
+        {
+            Assert.Throws<ArgumentException>(() => CoinChanger.GetChange(1, null));
+        }
     }
    
 }
